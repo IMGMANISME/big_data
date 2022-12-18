@@ -1,4 +1,4 @@
-import matplotlib
+
 import pandas as pd
 import matplotlib.pyplot as plt
 plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei']
@@ -26,13 +26,20 @@ del data['號牌粘貼反光紙塗抹磨損不清或未依規定縣掛號牌']
 del data['未保持行車安全距離']
 del data['其他違規']
 
-# delete the column of df
+# delete the column of data2
 del data2['百萬車公里']
 del data2['肇事率']
 del data2['死亡率']
 del data2['受傷人數']
 del data2['受傷率']
+del data2['死亡人數']
+data2['事故發生件數'] = data2['發生件數']
+del data2['發生件數']
 
+
+# Divide the data of data by 1000
+data['合計取締數/10000'] = data['合計取締數']/10000
+del data['合計取締數']
 
 # Print the column names
 print(data.to_string())
@@ -40,12 +47,13 @@ print(data2.to_string())
 
 data = data.append(data2)
 
+# Plot the data from the first CSV file and compare it with the data from the second CSV file
+data.plot(x='年別', kind='line')
 
-# Plot the data from the first CSV file
-data.plot()
-
+# Set the x-axis label, y-axis label, and the chart title
 plt.xlabel('年')
 plt.ylabel('數量')
 plt.title('國道交通事故與取締統計相關圖表')
+plt.legend()
 plt.savefig('output.png')
 plt.show()
