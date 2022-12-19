@@ -1,4 +1,3 @@
-
 import pandas as pd
 import matplotlib.pyplot as plt
 plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei']
@@ -33,6 +32,8 @@ del data2['死亡率']
 del data2['受傷人數']
 del data2['受傷率']
 del data2['死亡人數']
+
+# Rename the column[事故發生件數] of data2
 data2['事故發生件數'] = data2['發生件數']
 del data2['發生件數']
 
@@ -53,7 +54,7 @@ data.plot(x='年別', kind='line')
 # Set the x-axis label, y-axis label, and the chart title
 plt.xlabel('年')
 plt.ylabel('數量')
-plt.title('國道交通事故與取締統計相關圖表')
+plt.title('交通事故數與取締數相關圖表')
 plt.legend()
 plt.savefig('output.png')
 plt.show()
