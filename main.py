@@ -46,6 +46,7 @@ del data['合計取締數']
 print(data.to_string())
 print(data2.to_string())
 
+# Append the data from the second CSV file to the data from the first CSV file
 data = data.append(data2)
 
 # Plot the data from the first CSV file and compare it with the data from the second CSV file
